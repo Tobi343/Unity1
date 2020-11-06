@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CoinSpawner : MonoBehaviour
 {
     public GameObject coin;
+    public GameObject buff = null;
     public float step;
     public enum Direction
     {
@@ -56,7 +57,18 @@ public class CoinSpawner : MonoBehaviour
             }
             Destroy(coins[coins.Count - 1]);
         }
-
+        CreateBuff();
     }
 
+
+    private void CreateBuff()
+    {
+        if(buff != null)
+        {
+            int i = Random.Range(0, coins.Count-1);
+            Vector3 buffPos = coins[i].transform.position;
+            Destroy(coins[i]);
+            Instantiate(buff, buffPos, Quaternion.identity);
+        }
+    }
 }
