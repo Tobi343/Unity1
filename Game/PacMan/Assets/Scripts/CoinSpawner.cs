@@ -18,14 +18,13 @@ public class CoinSpawner : MonoBehaviour
     private float start;
     private float end;
     private Vector3 pos;
-    private List<GameObject> coins = new List<GameObject>();
+    public List<GameObject> coins = new List<GameObject>();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (direction == Direction.Horizontal)
         {
             size = transform.localScale.x;
-            Debug.Log(size);
             start = (size / 2) + transform.position.x;
             end = transform.position.x - (size / 2);
             pos = new Vector3(start, transform.position.y, transform.position.z);
